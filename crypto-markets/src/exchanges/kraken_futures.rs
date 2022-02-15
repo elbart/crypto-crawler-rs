@@ -76,7 +76,7 @@ fn check_error_in_body(resp: String) -> Result<String> {
     }
 }
 
-pub(super) fn kraken_http_get(url: &str) -> Result<String> {
+pub(super) fn kraken_futures_http_get(url: &str) -> Result<String> {
     let ret = http_get(url, None);
     match ret {
         Ok(resp) => check_error_in_body(resp),
@@ -86,7 +86,7 @@ pub(super) fn kraken_http_get(url: &str) -> Result<String> {
 
 // see <https://www.kraken.com/features/api#get-tradable-pairs>
 fn fetch_inverse_future_markets_raw() -> Result<Vec<InverseFutureMarket>> {
-    let txt = kraken_http_get("https://futures.kraken.com/derivatives/api/v3/instruments")?;
+    let txt = kraken_futures_http_get("https://futures.kraken.com/derivatives/api/v3/instruments")?;
     let obj = serde_json::from_str::<HashMap<String, Value>>(&txt)?;
     let markets = obj
         .get("instruments")

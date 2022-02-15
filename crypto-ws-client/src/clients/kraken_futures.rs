@@ -22,8 +22,6 @@ const CLIENT_PING_INTERVAL_AND_MSG: (u64, &str) = (10, r#"{"event":"ping"}"#);
 
 /// The WebSocket client for Kraken.
 ///
-/// Kraken has only Spot market.
-///
 ///   * WebSocket API doc: <https://support.kraken.com/hc/en-us/sections/360003562371-Websocket-API-Public>
 ///   * Trading at: <https://futures.kraken.com/>
 
